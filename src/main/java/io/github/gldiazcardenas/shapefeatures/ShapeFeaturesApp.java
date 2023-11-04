@@ -1,11 +1,6 @@
 package io.github.gldiazcardenas.shapefeatures;
 
-import io.github.gldiazcardenas.shapefeatures.rectangle.RectangleAdjacency;
-import io.github.gldiazcardenas.shapefeatures.rectangle.RectangleContainment;
-import io.github.gldiazcardenas.shapefeatures.rectangle.RectangleFeatures;
-import io.github.gldiazcardenas.shapefeatures.rectangle.RectangleIntersection;
-
-import java.awt.Rectangle;
+import io.github.gldiazcardenas.shapefeatures.rectangle.Rectangle;
 
 public final class ShapeFeaturesApp {
 
@@ -14,18 +9,26 @@ public final class ShapeFeaturesApp {
     }
 
     public static void main(String[] arg) {
-        RectangleFeatures rectangleFeatures = new RectangleFeatures();
+        ShapeFeatures<Rectangle> rectangleFeatures = ShapeFeaturesFactory.getInstance().get(Rectangle.class);
 
-        Rectangle rectangle1 = new Rectangle(0, 0, 10, 10);
-        Rectangle rectangle2 = new Rectangle(5, 15, 20, 20);
+        Rectangle rectangle1;
+        Rectangle rectangle2;
 
-        RectangleContainment containment = rectangleFeatures.containment(rectangle1, rectangle2);
-        RectangleAdjacency adjacency = rectangleFeatures.adjacency(rectangle1, rectangle2);
-        RectangleIntersection intersection = rectangleFeatures.intersection(rectangle1, rectangle2);
+        rectangle1 = new Rectangle(0, 0, 10, 10);
+        rectangle2 = new Rectangle(5, 5, 20, 20);
+        Intersection<Rectangle> intersection = rectangleFeatures.intersection(rectangle1, rectangle2);
 
+        rectangle1 = new Rectangle(0, 0, 10, 10);
+        rectangle2 = new Rectangle(2, 2, 4, 4);
+        Containment<Rectangle> containment = rectangleFeatures.containment(rectangle1, rectangle2);
+
+        rectangle1 = new Rectangle(0, 0, 10, 10);
+        rectangle2 = new Rectangle(0, 10, 4, 4);
+        Adjacency<Rectangle> adjacency = rectangleFeatures.adjacency(rectangle1, rectangle2);
+
+        System.out.println("Intersection: " + intersection);
         System.out.println("Containment: " + containment);
         System.out.println("Adjacency: " + adjacency);
-        System.out.println("Intersection: " + intersection);
     }
 
 }
