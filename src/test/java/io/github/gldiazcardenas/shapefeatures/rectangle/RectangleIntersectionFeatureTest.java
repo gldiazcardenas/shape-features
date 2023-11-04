@@ -14,15 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RectangleIntersectionFeaturesTest {
+public class RectangleIntersectionFeatureTest {
 
-    private final RectangleIntersectionFeature intersection = new RectangleIntersectionFeature();
+    private final RectangleIntersectionFeature intersectionFeature = new RectangleIntersectionFeature();
 
     @ParameterizedTest
     @ArgumentsSource(IntersectingRectanglesProvider.class)
     public void shouldBeIntersecting(Rectangle r1, Rectangle r2, Rectangle result) {
         // When
-        RectangleIntersection intersection = this.intersection.evaluate(r1, r2);
+        RectangleIntersection intersection = intersectionFeature.evaluate(r1, r2);
 
         // Then
         assertNotNull(intersection);
@@ -33,9 +33,9 @@ public class RectangleIntersectionFeaturesTest {
 
     @ParameterizedTest
     @ArgumentsSource(NonIntersectingRectanglesProvider.class)
-    public void shouldNotBeIntersecting(Rectangle r1, Rectangle r2) {
+    public void shouldBeNotIntersecting(Rectangle r1, Rectangle r2) {
         // When
-        RectangleIntersection intersection = this.intersection.evaluate(r1, r2);
+        RectangleIntersection intersection = intersectionFeature.evaluate(r1, r2);
 
         // Then
         assertNotNull(intersection);
@@ -45,11 +45,17 @@ public class RectangleIntersectionFeaturesTest {
 
     private static final class IntersectingRectanglesProvider implements ArgumentsProvider {
         @Override
-        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
             return Stream.of(
                 Arguments.of(
                     new Rectangle(0, 0, 10, 10),
                     new Rectangle(5, 5, 10, 10),
+                    new Rectangle(5, 5, 5, 5)),
+
+                // Exactly like previous one, but switching the order of parameters, should produce same result
+                Arguments.of(
+                    new Rectangle(5, 5, 10, 10),
+                    new Rectangle(0, 0, 10, 10),
                     new Rectangle(5, 5, 5, 5)),
 
                 Arguments.of(
@@ -65,23 +71,29 @@ public class RectangleIntersectionFeaturesTest {
                 Arguments.of(
                     new Rectangle(0, 0, 10, 10),
                     new Rectangle(-5, -7, 10, 10),
-                    new Rectangle(0, 0, 5, 3))
+                    new Rectangle(0, 0, 5, 3)),
+
+                // This one is contained, and at the same time intersecting
+                Arguments.of(
+                    new Rectangle(0, 0, 10, 10),
+                    new Rectangle(2, 2, 4, 4),
+                    new Rectangle(2, 2, 4, 4))
             );
         }
     }
 
     private static final class NonIntersectingRectanglesProvider implements ArgumentsProvider {
         @Override
-        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
             return Stream.of(
                 Arguments.of(null, null),
                 Arguments.of(null, new Rectangle(0, 0, 10, 10)),
                 Arguments.of(new Rectangle(0, 0, 10, 10), null),
                 Arguments.of(new Rectangle(0, 0, 10, 10), new Rectangle(20, 20, 10, 10)),
+                // This one is adjacent, not intersecting
                 Arguments.of(new Rectangle(0, 0, 10, 10), new Rectangle(5, 10, 10, 10))
             );
         }
     }
-
 
 }
