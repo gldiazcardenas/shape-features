@@ -2,6 +2,9 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.Intersection;
 
+/**
+ * Represents an intersection relationship between two rectangles.
+ */
 public class RectangleIntersection implements Intersection<Rectangle> {
 
     private final Rectangle intersection;

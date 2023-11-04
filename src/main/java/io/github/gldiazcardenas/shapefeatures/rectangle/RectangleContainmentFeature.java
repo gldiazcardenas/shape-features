@@ -2,6 +2,9 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.ContainmentFeature;
 
+/**
+ * Rectangle specific containment feature implementation.
+ */
 public class RectangleContainmentFeature implements ContainmentFeature<Rectangle, RectangleContainment> {
 
     @Override

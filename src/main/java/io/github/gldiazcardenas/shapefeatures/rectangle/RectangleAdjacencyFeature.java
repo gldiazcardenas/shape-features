@@ -3,6 +3,9 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 import io.github.gldiazcardenas.shapefeatures.Adjacency;
 import io.github.gldiazcardenas.shapefeatures.AdjacencyFeature;
 
+/**
+ * Rectangle specific adjacency feature implementation.
+ */
 public class RectangleAdjacencyFeature implements AdjacencyFeature<Rectangle, RectangleAdjacency> {
 
     @Override

@@ -2,6 +2,9 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.Containment;
 
+/**
+ * Represents a containment relationship between two rectangles.
+ */
 public class RectangleContainment implements Containment<Rectangle> {
 
     private final Rectangle container;

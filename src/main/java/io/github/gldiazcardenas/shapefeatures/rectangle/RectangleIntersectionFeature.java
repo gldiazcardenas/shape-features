@@ -2,6 +2,9 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.IntersectionFeature;
 
+/**
+ * Rectangle specific implementation of intersection feature.
+ */
 public class RectangleIntersectionFeature implements IntersectionFeature<Rectangle, RectangleIntersection> {
 
     @Override

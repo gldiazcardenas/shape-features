@@ -2,6 +2,10 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.ShapeFeatures;
 
+/**
+ * Implementation that delegates the responsibility of evaluating the features to the corresponding implementation.
+ * This acts as a facade for the rectangle features.
+ */
 public class RectangleFeatures implements ShapeFeatures<Rectangle> {
 
     private final RectangleAdjacencyFeature adjacencyFeature = new RectangleAdjacencyFeature();
