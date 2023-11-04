@@ -28,7 +28,7 @@ public class RectangleAdjacencyFeature implements AdjacencyFeature<Rectangle, Re
             return new RectangleAdjacency(type);
         }
 
-        return new RectangleAdjacency(rightAdjacency(rectangle2, rectangle1));
+        return new RectangleAdjacency(rightAdjacency(rectangle1, rectangle2));
     }
 
     private static Adjacency.Type topAdjacency(Rectangle r1, Rectangle r2) {
@@ -54,7 +54,7 @@ public class RectangleAdjacencyFeature implements AdjacencyFeature<Rectangle, Re
             return Adjacency.Type.NONE;
         }
 
-        if ((r1.getX() >= r2.getX() && r1.getMaxX() <= r1.getMaxX()) ||
+        if ((r1.getX() >= r2.getX() && r1.getMaxX() <= r2.getMaxX()) ||
             (r2.getX() >= r1.getX() && r2.getMaxX() <= r1.getMaxX())) {
             return Adjacency.Type.SUB_LINE;
         }
@@ -85,7 +85,7 @@ public class RectangleAdjacencyFeature implements AdjacencyFeature<Rectangle, Re
             return Adjacency.Type.NONE;
         }
 
-        if ((r1.getY() >= r2.getY() && r1.getMaxY() <= r1.getMaxY()) ||
+        if ((r1.getY() >= r2.getY() && r1.getMaxY() <= r2.getMaxY()) ||
             (r2.getY() >= r1.getY() && r2.getMaxY() <= r1.getMaxY())) {
             return Adjacency.Type.SUB_LINE;
         }

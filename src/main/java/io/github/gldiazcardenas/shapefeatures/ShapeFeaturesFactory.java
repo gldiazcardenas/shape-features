@@ -6,7 +6,7 @@ import io.github.gldiazcardenas.shapefeatures.rectangle.RectangleFeatures;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShapeFeaturesFactory {
+public final class ShapeFeaturesFactory {
 
     private static final ShapeFeaturesFactory INSTANCE = new ShapeFeaturesFactory();
 

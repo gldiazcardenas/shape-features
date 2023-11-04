@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RectangleContainmentFeatureTests {
+public class RectangleContainmentFeatureTest {
 
     private final RectangleContainmentFeature containmentFeature = new RectangleContainmentFeature();
 
@@ -32,11 +32,11 @@ public class RectangleContainmentFeatureTests {
         assertNotNull(containment.getContained());
 
         if (r1Container) {
-            assertEquals(containment.getContainer(), r1);
-            assertEquals(containment.getContained(), r2);
+            assertEquals(r1, containment.getContainer());
+            assertEquals(r2, containment.getContained());
         } else {
-            assertEquals(containment.getContainer(), r2);
-            assertEquals(containment.getContained(), r1);
+            assertEquals(r2, containment.getContainer());
+            assertEquals(r1, containment.getContained());
         }
     }
 

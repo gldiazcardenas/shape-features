@@ -20,7 +20,7 @@ public class RectangleIntersectionFeatureTest {
 
     @ParameterizedTest
     @ArgumentsSource(IntersectingRectanglesProvider.class)
-    public void shouldBeIntersecting(Rectangle r1, Rectangle r2, Rectangle result) {
+    public void shouldBeIntersecting(Rectangle r1, Rectangle r2, Rectangle expected) {
         // When
         RectangleIntersection intersection = intersectionFeature.evaluate(r1, r2);
 
@@ -28,7 +28,7 @@ public class RectangleIntersectionFeatureTest {
         assertNotNull(intersection);
         assertTrue(intersection.isIntersecting());
         assertNotNull(intersection.getIntersection());
-        assertEquals(intersection.getIntersection(), result);
+        assertEquals(expected, intersection.getIntersection());
     }
 
     @ParameterizedTest
