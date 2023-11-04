@@ -2,8 +2,6 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.Containment;
 
-import java.awt.Rectangle;
-
 public class RectangleContainment implements Containment<Rectangle> {
 
     private final Rectangle container;
@@ -15,7 +13,7 @@ public class RectangleContainment implements Containment<Rectangle> {
     }
 
     @Override
-    public boolean isContained() {
+    public boolean isContainment() {
         return contained != null && container != null;
     }
 
@@ -32,10 +30,9 @@ public class RectangleContainment implements Containment<Rectangle> {
     @Override
     public String toString() {
         return "RectangleContainment{" +
-            (contained == null || container == null ? "NONE" :
-                ("container=" + container +
-                ", contained=" + contained))
-             +
-            '}';
+            (isContainment() ?
+                ("container=" + container + ", contained=" + contained) :
+                "NONE")
+             + '}';
     }
 }

@@ -1,14 +1,12 @@
 package io.github.gldiazcardenas.shapefeatures;
 
-import java.awt.Shape;
-
 public interface Adjacency<S extends Shape> {
 
     enum Type {
         NONE,
+        SUB_LINE,
         PARTIAL,
         PROPER,
-        SUB_ADJACENT
     }
 
     Type getType();

@@ -2,8 +2,6 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.Adjacency;
 
-import java.awt.Rectangle;
-
 public class RectangleAdjacency implements Adjacency<Rectangle> {
 
     private final Type type;

@@ -2,8 +2,6 @@ package io.github.gldiazcardenas.shapefeatures.rectangle;
 
 import io.github.gldiazcardenas.shapefeatures.Intersection;
 
-import java.awt.Rectangle;
-
 public class RectangleIntersection implements Intersection<Rectangle> {
 
     private final Rectangle intersection;
@@ -18,7 +16,7 @@ public class RectangleIntersection implements Intersection<Rectangle> {
     }
 
     @Override
-    public Rectangle getIntersecting() {
+    public Rectangle getIntersection() {
         return intersection;
     }
 
