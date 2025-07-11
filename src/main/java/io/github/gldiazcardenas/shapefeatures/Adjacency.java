@@ -37,4 +37,6 @@ public interface Adjacency<S extends Shape> {
      */
     Type getType();
 
+    // hola
+
 }
